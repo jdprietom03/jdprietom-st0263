@@ -43,8 +43,13 @@ export default class AMQPServer {
   }
 
   private onListService(channel: Channel, msg: Message | null) {
+
+    if (!msg) {
+      return;
+    }
+
     const files = new FileService().listFiles();
-    logger.info('LIST SERVICE for ', msg?.properties.correlationId);
+    logger.info('LIST SERVICE for ', msg.properties.correlationId);
     this.publish(channel, files, msg);
   }
 
