@@ -58,7 +58,7 @@ export default class AMQPServer {
       return;
     }
     
-    logger.info('FIND SERVICE for ', msg?.properties.correlationId);
+    logger.info('FIND SERVICE for ', msg.properties.correlationId);
 
     const files = new FileService().findFileByName(
       msg.content.toString('utf-8'),
