@@ -64,7 +64,7 @@ export class FileClient extends ProtoClient<FileServiceClient> {
       });
     } catch (error) {
 
-      req.body = req.params.path;
+      req.body = req.params.pattern;
 
       await this.handleFallback('find_service', req, res);
     }
