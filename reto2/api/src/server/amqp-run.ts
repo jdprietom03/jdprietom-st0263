@@ -61,7 +61,7 @@ export default class AMQPServer {
     logger.info('FIND SERVICE for ', msg.properties.correlationId);
 
     const files = new FileService().findFileByName(
-      msg.content.toString('utf-8'),
+      JSON.parse(msg.content.toString('utf-8')),
     );
 
     this.publish(channel, files, msg);
@@ -76,7 +76,7 @@ export default class AMQPServer {
 
     const { replyTo, correlationId } = msg.properties;
 
-    amqpChannel.sendToQueue(replyTo, Buffer.from(response), { correlationId });
+    amqpChannel.sendToQueue(replyTo, Buffer.from(JSON.stringify(response)), { correlationId });
 
     amqpChannel.ack(msg);
   }
