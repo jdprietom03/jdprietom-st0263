@@ -86,6 +86,23 @@ require('@grpc/grpc-js')
   npm run
 ```
 
+### Example
+
+Run Api Gateway
+```bash
+  npm run client
+```
+
+Run Grpc Server
+```bash
+  npm run server
+```
+
+Run Retry Server
+```bash
+  npm run consumer
+```
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file in each **(client/server)** folder
@@ -261,10 +278,14 @@ Scripts in the `package.json` file offer various options for building the projec
 - **Modular Organization**: The code is organized in a modular fashion with a clear and defined directory structure for recognition of each aspect of the design.
 ## Response snapshots
 
-
+![image](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/77ab7f63-06b7-4569-8920-894ea1a2ea36)
 
 ## IPs
 
+- **Api Gateway**: <details> <summary> Show Elastic IP </summary> 3.90.121.234 </details>
+- **Grpc Server**: <details> <summary> Show Elastic IP </summary> 3.234.34.168 </details>
+- **MOM Instance**: <details> <summary> Show Elastic IP </summary> 3.223.88.22 </details>
+- **Retry Server**: <details> <summary> Show Elastic IP </summary> 44.208.106.154 </details>
 
 ## References
 
