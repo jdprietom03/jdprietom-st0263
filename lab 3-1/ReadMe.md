@@ -1,184 +1,175 @@
-# Lab 3.1: File Management in HDFS and S3
+# Lab 3.1: Comprehensive Guide for File Management in AWS S3
 
-## 1. Configuring AWS S3
-First, access the S3 service on AWS:
+## Section 1: Configuring AWS S3 for Storage Operations
 
-<img width="881" alt="image" src="https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/fa53c905-dd05-431c-a914-c5123f2d5f54">
+### Step 1.1: Initializing S3 Bucket
+- **Access S3 Service**: Begin by accessing the AWS S3 service.
 
-### 1.1 Creating a Bucket
-We will create a bucket and assign it a name:
+  ![Access S3 Service](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/fa53c905-dd05-431c-a914-c5123f2d5f54)
 
-<img width="898" alt="image" src="https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/96dac058-654e-42e5-9ec3-de4a8ff20547">
+- **Bucket Creation**: Proceed to create a new S3 bucket and assign a unique name.
 
-#### 1.1.1 Enabling Public Access
+  ![Create Bucket](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/96dac058-654e-42e5-9ec3-de4a8ff20547)
 
-Next, we'll configure our bucket for public access. Select ```ACLs enabled```:
+#### Configuring Public Access
+- **ACLs Configuration**: Enable 'ACLs' for public access settings.
 
-<img width="881" alt="image" src="https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/61f8d7e2-f6fa-4bf9-9bb4-bb23b936ca25">
+  ![Enable ACLs](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/61f8d7e2-f6fa-4bf9-9bb4-bb23b936ca25)
 
-Remove the public restriction:
+- **Removing Public Restriction**: Adjust settings to remove the public access restriction.
 
-<img width="897" alt="image" src="https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/b2024920-e85b-41f1-baf6-d8a4df638538">
+  ![Remove Restriction](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/b2024920-e85b-41f1-baf6-d8a4df638538)
 
-#### 1.1.2 Validation and Creation
+- **Bucket Finalization**: Conclude the process by creating the bucket.
 
-Finally, create the bucket by clicking on ```Create bucket```:
+  ![Finalize Bucket](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/10b98c19-63b0-42c6-88e2-d9064973c11a)
 
-<img width="882" alt="image" src="https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/10b98c19-63b0-42c6-88e2-d9064973c11a">
+### Step 1.2: Uploading Data to S3 Bucket
+- **Navigating to Bucket**: Locate your bucket under 'S3 >> Buckets'.
 
-## 1.2 Manually Uploading Content to the Bucket
+  ![Locate Bucket](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/4e5c2b4b-bebd-4d8d-a325-3becc7ddd8b5)
 
-Go to ```S3 >> Buckets``` and locate our bucket:
+- **Initiating Upload**: Select 'Upload' to start transferring files.
 
-<img width="888" alt="image" src="https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/4e5c2b4b-bebd-4d8d-a325-3becc7ddd8b5">
+  ![Start Upload](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/c798a0c5-5cf2-4bdc-90c6-854055e49c7f)
 
-Click on Upload:
+- **File Selection**: Choose and upload the desired files or directories.
 
-<img width="897" alt="image" src="https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/c798a0c5-5cf2-4bdc-90c6-854055e49c7f">
+  ![Choose Files](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/283f0d02-3a9f-40b3-886d-cdf3882cbc20)
 
-Manually upload each file and/or directory:
+- **Accessing Uploaded Files**: Navigate to the uploaded file and access its 'Object URL'.
 
-<img width="892" alt="image" src="https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/283f0d02-3a9f-40b3-886d-cdf3882cbc20">
+  ![Access Object URL](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/f661edc1-32dd-4842-9326-50f0f50c3a2a)
 
-Confirm the upload, and the files will be stored in AWS S3.
+- **Public Access Verification**: Confirm the public accessibility of the file.
 
-A continuación entramos a nuestro archivo ya cargado y accederemos al link del ```Object URL```:
+  ![Public Access Verification](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/5e99c942-b504-4a83-847a-29d522b28416)
 
-<img width="1662" alt="image" src="https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/f661edc1-32dd-4842-9326-50f0f50c3a2a">
+#### AWS CLI Integration
+- **Listing Files via CLI**: Utilize AWS CLI commands for file listing.
 
-Veremos el siguient mensaje al intentar acceder:
+  ```bash
+  aws s3 ls s3://<YOUR_BUCKET_NAME>
+  ```
 
-<img width="1010" alt="image" src="https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/5e99c942-b504-4a83-847a-29d522b28416">
+  ![CLI Command](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/6087b263-5b88-4151-b418-17a273eb331e)
 
-✅ You're done! You now have an AWS S3 public bucket.
-
-Note: In order to read the files from the public bucket created above through the AWS CLI you can use the following command:
-
-```bash
-aws s3 ls s3://<YOUR_BUCKET_NAME>
-```
-Command to read the previously created bucket
-
-```bash
-aws s3 ls s3://jdprietom03
-```
-<img width="706" alt="image" src="https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/6087b263-5b88-4151-b418-17a273eb331e">
+✅ Successfully created a publicly accessible AWS S3 bucket.
 
 ---
 
-### Section 2: File management in HDFS using terminal
+# Lab 3.1: Comprehensive Guide for File Management in Hadoop Distributed File System (HDFS)
 
-1. We will have to create an AWS EMR cluster, visit the following guide '[Creating an EMR Cluster](https://github.com/st0263eafit/st0263-232/blob/main/bigdata/00-lab-aws-emr/Install-AWS-EMR.pdf)' for this purpose.
-2. Once the cluster specified above has been created we must connect to it via SSH; how to connect to the cluster via SSH can be found
-2.1 Access to Primary node
+## Section 2: File Management in HDFS using Terminal
 
-2.1.1. Within the Amazon EMR menu go to **Clusters** and select the `Cluster ID` that has the create before.
+### Step 2.1: Creating and Accessing AWS EMR Cluster
+- **Cluster Creation**: For the initial setup, create an AWS EMR cluster by referring to the '[Creating an EMR Cluster](https://github.com/st0263eafit/st0263-232/blob/main/bigdata/00-lab-aws-emr/Install-AWS-EMR.pdf)' guide.
 
-2.1.2. Click on the URL ```Connect to the Primary node using SSM``` and follow the instructions there. 
-    
-<img width="1567" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/c7d53aef-fcec-4338-9da4-1b44f5f79f71">
+### Step 2.2: SSH Connection to Cluster
+- **Accessing the Primary Node**: In Amazon EMR, select your newly created cluster and navigate to 'Clusters >> Cluster ID'.
 
-2.1.3. A successful SSH connection to the master node of the cluster will look as follows:
-    
-<img width="623" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/56d34303-2972-46f2-80d0-7e58bdaef4f5">
+- **Connecting to Node**: Follow the detailed instructions under 'Connect to the Primary node using SSM'.
 
-2.1.4. You will need to edit the 'hue.ini' file by following these steps: 
+  ![Connect to Node](https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/c7d53aef-fcec-4338-9da4-1b44f5f79f71)
 
-2.1.4.1. Type the following command in the terminal:
+- **SSH Connection Verification**: A successful SSH connection to the master node of the cluster should resemble the following:
 
-```bash
-sudo nano /etc/hue/conf/hue.ini
-```
-    
-2.1.4.2. Find the line containing 'webhdfs_url' and change the port. You should put the HDFS Name Node port found in the Applications section over your cluster.
+  ![SSH Connection](https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/56d34303-2972-46f2-80d0-7e58bdaef4f5)
 
-<img width="624" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/d5d797bc-ef9d-4341-8075-d277cf321b0b">
+#### Step 2.2.1: Editing 'hue.ini' File
+- **Editing Configuration File**: To edit the 'hue.ini' file, execute the command `sudo nano /etc/hue/conf/hue.ini` in the terminal.
 
-As you can see, the selected port must be 9870
-        
-<img width="620" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/ac5a3857-5d64-4404-8746-f1df054f820d">
-        
-2.1.4.3. Save the changes over the file.
+- **Modifying 'webhdfs_url'**: Locate and change the 'webhdfs_url' line to match the HDFS Name Node port found in the Applications section of your cluster.
 
-2.1.4.4. Restart the Hue service using the following command:
-    
-```bash
-sudo systemctl restart hue.service
-```
-        
-4. After establishing a connection to the primary node we will create a folder called 'gutenberg-small' inside the path '/user/hadoop/datasets' using the following commands:
+  ![Edit hue.ini](https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/d5d797bc-ef9d-4341-8075-d277cf321b0b)
 
-1. Create the directory 'datasets' inside the path 'user/hadoop/'.
+  The selected port should be 9870.
 
-```bash
-hdfs dfs -mkdir /user/hadoop/datasets
-```
+  ![Port Selection](https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/ac5a3857-5d64-4404-8746-f1df054f820d)
 
-2. Create the directory 'gutenber-small' inside the path 'user/hadoop/datasets/'.
+- **Saving Changes and Restarting Service**: After making the necessary changes, save the file and restart the Hue service using `sudo systemctl restart hue.service`.
 
-```bash
-hdfs dfs -mkdir /user/hadoop/datasets/gutenberg-small
-```
+### Step 2.3: Directory Creation and Data Transfer in HDFS
+- **Creating Directories in HDFS**:
+  - Command to create '/user/hadoop/datasets': `hdfs dfs -mkdir /user/hadoop/datasets`.
+  - Command to create '/user/hadoop/datasets/gutenberg-small': `hdfs dfs -mkdir /user/hadoop/datasets/gutenberg-small`.
 
-3. List directories and files present in /user/hadoop/ path
+- **Listing Directories**: To view the directories, use `hdfs dfs -ls /user/hadoop/datasets`.
 
-```bash
-hdfs dfs -ls /user/hadoop/datasets
-```
-    
-5. Put the contents of a local to the directory '/user/hadoop/datasets/gutenberg-small' using the following command. For this purpouse you could clone the repository that has example datasets
-    
-    ```bash
-    hdfs dfs -put <YOUR_LOCAL_FOLDER> /user/hadoop/datasets/gutenberg-small/
-    ```
+- **Transferring Data to HDFS**: Employ the `hdfs dfs -put` command to transfer local data to '/user/hadoop/datasets/gutenberg-small/'.
 
-✅ You are done! You can now manage files to HDFS from the EMR cluster using the terminal.
+  ```bash
+  hdfs dfs -put <YOUR_LOCAL_FOLDER> /user/hadoop/datasets/gutenberg-small/
+  ```
+
+✅ Completion of file management in HDFS using the terminal is now achieved. This section provides a step-by-step process to efficiently manage and transfer files within HDFS using an AWS EMR cluster.
 
 ---
 
-### Section 3: File management in HDFS using HUE
+# Lab 3.1: Comprehensive Guide for File Management in HDFS using HUE
 
-1. Go to AWS console and search for the EMR service.
-2. Select the 'Cluster ID' that has the status 'Waiting'; then select the **Applications** option.
-3. Select the URL of the **Hue** field and enter the 'hadoop' user and a password.
-4. Select the **Files** section:
-   
-    <img width="820" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/a0ef39ee-0773-4d16-8baf-3d96ea237677">
+## Section 3: File Management in HDFS via HUE
 
-6. If you have been following the previous steps right, you must found the folder **datasets**. Otherwise, create the folder in `New` button:
-    
-    <img width="820" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/b41c4eb2-df2f-4c83-bf1b-1f30fb1e73c6">
-    
-7. Select the `Upload` button:
-    
-    <img width="820" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/895a21a4-4d45-435c-be9d-0492ad517efc">
+This section outlines the process of managing files in the Hadoop Distributed File System (HDFS) using the HUE interface on an AWS EMR cluster.
 
-✅ Done! You can now upload files to HDFS of the EMR cluster via HUE.
+### Step 3.1: Accessing HUE on AWS EMR
+1. **Navigating to EMR Service**: Start by logging into the AWS console and accessing the EMR service.
+
+2. **Cluster Selection**: Choose the 'Cluster ID' of the EMR cluster that is in 'Waiting' status.
+
+3. **Accessing HUE**: Locate the URL provided under the **Applications** tab for the HUE interface.
+
+4. **Login Credentials**: Enter the platform using the 'hadoop' user credentials.
+
+### Step 3.2: Uploading Files to HDFS
+1. **Navigating to Files Section**: Within HUE, select the **Files** section to access HDFS directories and files.
+
+   ![Files Section in HUE](https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/a0ef39ee-0773-4d16-8baf-3d96ea237677)
+
+2. **Directory Verification**: If you have followed previous steps correctly, you should locate the **datasets** folder. If not present, create it using the `New` button.
+
+   ![Create Folder](https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/b41c4eb2-df2f-4c83-bf1b-1f30fb1e73c6)
+
+3. **Uploading Files**: Use the `Upload` button to transfer desired files from your local system to the HDFS directory.
+
+   ![Upload Files](https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/895a21a4-4d45-435c-be9d-0492ad517efc)
+
+✅ You have successfully uploaded files to HDFS using the HUE interface on an AWS EMR cluster.
 
 ---
 
-### Section 4: File management in S3 using HUE
+# Lab 3.1: Comprehensive Guide for File Management in S3 using HUE
 
-1. Log into the AWS console and search for the EMR service.
-2. Select the 'Cluster ID' that has the status 'Waiting'; then select the '**Applications**' option.
-3. Select the URL of the 'HUE' field and enter the 'hadoop' user and a password of your choice.
-4. Select the **S3** section:
-    
-    <img width="820" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/70ca831c-62ce-4a67-a46f-15e4b78a3209">
+## Section 4: Managing Files in S3 via HUE
 
-5. All your buckets must be found there.
+This section describes the process of managing and uploading files to Amazon S3 buckets using the HUE interface within an AWS EMR cluster.
 
-6. Select a bucket. Then, click on `Upload` button, `Select Files`; and finally choose the files you want to upload.
+### Step 4.1: Accessing HUE for S3 File Management
+1. **EMR Service Access**: Log into the AWS console and navigate to the EMR service.
 
-7. Verify the file is accesible through other ways like AWS CLI. Execute the next command to list the file over your bucket:
+2. **Cluster Selection**: Choose the 'Cluster ID' of your EMR cluster that is in the 'Waiting' state.
+
+3. **HUE Interface**: Select the 'HUE' field URL under the '**Applications**' tab.
+
+4. **HUE Login**: Enter the interface using the 'hadoop' user credentials.
+
+### Step 4.2: Uploading Files to S3 via HUE
+1. **Navigating to S3 Section**: In the HUE interface, go to the **S3** section to access your AWS S3 buckets.
+
+   ![S3 Section in HUE](https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/70ca831c-62ce-4a67-a46f-15e4b78a3209)
+
+2. **Bucket Selection**: All your S3 buckets should be visible here. Select the desired bucket for file management.
+
+3. **File Upload Process**: Click on the `Upload` button, then `Select Files` to choose and upload files from your local system to the chosen S3 bucket.
+
+4. **AWS CLI Verification**: To confirm the file's presence, use the AWS CLI command to list the contents of your bucket:
 
     ```bash
     aws s3 ls s3://<YOUR_BUCKET_NAME>
     ```
 
-    Should show the file you uploaded before.
+    This command should display the recently uploaded file.
 
-    <img width="820" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/59aa1ab6-7111-42da-b467-7b2a3ed5781e">
+   ![CLI Verification](https://github.com/jdprietom03/jdprietom-st0263/assets/80794157/b87f976d-3dee-4516-8093-08cb2f736fad)
 
-✅ Done! You can now upload files to an S3 bucket via HUE.
-
+✅ You have now successfully managed and uploaded files to an S3 bucket via the HUE interface on an AWS EMR cluster.
