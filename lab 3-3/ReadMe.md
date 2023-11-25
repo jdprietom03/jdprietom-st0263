@@ -59,8 +59,6 @@ In the Summary section, locate the ```ARN``` field and copy this value as it wil
 
 ---
 
-Continuando con la documentación:
-
 ### 2. Utilizing RedShift's Query Editor Service
 
 #### 2.1 Accessing the Query Editor - RedShift
